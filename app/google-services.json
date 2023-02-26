@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "715670197680",
+    "project_id": "mywishkart-f8a7c",
+    "storage_bucket": "mywishkart-f8a7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715670197680:android:abc681a443bc3841c4f275",
+        "android_client_info": {
+          "package_name": "br.com.mywishkart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715670197680-1m1kqmldu1pv6rppqekfav2hhofqa09f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYZhGJfyeMD81zW0ZQiMCBIP8_6WWXjVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715670197680-1m1kqmldu1pv6rppqekfav2hhofqa09f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
