@@ -65,6 +65,13 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
 
+    // Animated Navigation
+    def accompanist_version = "0.28.0"
+    implementation "com.google.accompanist:accompanist-navigation-animation:$accompanist_version"
+
+    // Compose Navigation
+    implementation "androidx.navigation:navigation-compose:2.5.3"
+
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:30.5.0')
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
