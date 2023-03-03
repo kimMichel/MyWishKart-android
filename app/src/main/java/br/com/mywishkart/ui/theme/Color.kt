@@ -2,7 +2,12 @@ package br.com.mywishkart.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+val Primary01 = Color(0xFFF89943)
+val Primary02 = Color(0xFFFF7900)
+val Primary03 = Color(0xFFD96700)
+
+val Secondary01 = Color(0xFFBF6F26)
+val Secondary02 = Color(0xFFBF600A)
+val Secondary03 = Color(0xFF984800)
+
+val Black = Color(0xFF403D3B)
