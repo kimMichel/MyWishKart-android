@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import br.com.mywishkart.ui.screen.home.HomeScreen
+import br.com.mywishkart.ui.screen.main.MainScreen
 import br.com.mywishkart.ui.screen.splash.SplashViewModel
 import br.com.mywishkart.ui.theme.MyWishKartTheme
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    HomeScreen()
+                    MainScreen()
                 }
             }
         }
