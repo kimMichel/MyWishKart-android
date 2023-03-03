@@ -2,8 +2,8 @@ package br.com.mywishkart.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.Checkbox
 import androidx.compose.material.Text
@@ -24,7 +24,8 @@ import br.com.mywishkart.models.WishItem
 
 @Composable
 fun HomeItem(
-    category: CategoryItem
+    category: CategoryItem,
+    navigateTo: () -> Unit
 ) {
     Card(
         shape = RoundedCornerShape(8.dp),
@@ -35,16 +36,24 @@ fun HomeItem(
             .padding(10.dp)
     ) {
         Column {
-            Text(
+            Row(
                 modifier = Modifier
+                    .fillMaxWidth()
                     .padding(12.dp),
-                text = category.categoryTitle,
-                fontWeight = FontWeight.Bold,
-                fontSize = 18.sp
-            )
-            for (item in category.items) {
-                ItemPerCategory(item = item)
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    modifier = Modifier,
+                    text = category.categoryTitle,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp
+                )
+                Button(onClick = { navigateTo() }) {
+                    Text(text = "Add")
+                }
             }
+            category.items.forEach { ItemPerCategory(item = it) }
         }
 
     }
@@ -154,7 +163,9 @@ fun HomeItemPreview() {
                     ),
                 )
             )
-        )
+        ) {
+
+        }
     }
 }
 

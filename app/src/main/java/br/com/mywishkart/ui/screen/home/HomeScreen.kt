@@ -8,12 +8,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import br.com.mywishkart.models.CategoryItem
 import br.com.mywishkart.models.WishItem
+import br.com.mywishkart.navigation.Screen
 import br.com.mywishkart.ui.components.HomeItem
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navController: NavHostController
+) {
 
     val categoryList = listOf(
         CategoryItem(
@@ -48,13 +53,7 @@ fun HomeScreen() {
         ),
         CategoryItem(
             categoryTitle = "Conta",
-            items = listOf(
-                WishItem(
-                    title = "Frango",
-                    date = "01/03/2023",
-                    value = 200.00
-                )
-            )
+            items = listOf()
         ),
         CategoryItem(
             categoryTitle = "Goals",
@@ -92,19 +91,27 @@ fun HomeScreen() {
         modifier = Modifier
             .fillMaxSize()
     ) {
-        HomeContent(categoryList = categoryList)
+        HomeContent(
+            categoryList = categoryList,
+            navController = navController
+        )
     }
 }
 
 @Composable
-fun HomeContent(categoryList: List<CategoryItem>) {
+fun HomeContent(
+    categoryList: List<CategoryItem>,
+    navController: NavHostController
+) {
     LazyColumn(
         modifier = Modifier
             .padding(top = 4.dp)
     ) {
         items(categoryList.size) { i ->
             val category = categoryList[i]
-            HomeItem(category = category)
+            HomeItem(category = category) {
+                navController.navigate("${Screen.Create.route}/${category.categoryTitle}")
+            }
         }
     }
 }
@@ -147,11 +154,6 @@ fun HomeContentPreview() {
             CategoryItem(
                 categoryTitle = "Conta",
                 items = listOf(
-                    WishItem(
-                        title = "Frango",
-                        date = "01/03/2023",
-                        value = 200.00
-                    )
                 )
             ),
             CategoryItem(
@@ -184,6 +186,7 @@ fun HomeContentPreview() {
                     ),
                 )
             )
-        )
+        ),
+        navController = rememberNavController()
     )
 }
