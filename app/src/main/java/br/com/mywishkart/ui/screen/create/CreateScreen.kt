@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -14,11 +16,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.mywishkart.ui.components.EditItem
 import br.com.mywishkart.ui.theme.MyWishKartTheme
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CreateScreen(
-    args: String
+    args: String,
+    viewModel: CreateItemViewModel = koinViewModel()
 ) {
+    val wishInputText by viewModel.wishInputText.collectAsState()
+    val wishValueInputText by viewModel.wishValueInputText.collectAsState()
+
     Box(
         modifier = Modifier
             .padding(30.dp)
@@ -32,12 +39,12 @@ fun CreateScreen(
                 fontWeight = FontWeight.Bold
             )
             EditItem(
-                wish = "TODO",
-                value = "200.00",
+                wish = wishInputText,
+                value = wishValueInputText,
                 buttonText = "Create",
-                onWishChange = { }
+                onWishChange = { viewModel.onWishChange(it) }
             ) {
-
+                viewModel.onWishValueChange(it)
             }
         }
     }

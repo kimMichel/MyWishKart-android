@@ -21,8 +21,8 @@ fun EditItem(
     wish: String,
     value: String,
     buttonText: String,
-    onWishChange: () -> Unit,
-    onValueChange: () -> Unit
+    onWishChange: (String) -> Unit,
+    onValueChange: (String) -> Unit
 ) {
 
     val localFocusManager = LocalFocusManager.current
@@ -39,7 +39,7 @@ fun EditItem(
         TextField(
             modifier = Modifier.fillMaxWidth(),
             value = wish,
-            onValueChange = { onWishChange() },
+            onValueChange = { onWishChange(it) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Done
@@ -57,7 +57,7 @@ fun EditItem(
         TextField(
             modifier = Modifier.fillMaxWidth(),
             value = value,
-            onValueChange = { onValueChange() },
+            onValueChange = { onValueChange(it) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Done

@@ -1,6 +1,7 @@
 package br.com.mywishkart
 
 import android.app.Application
+import br.com.mywishkart.di.CreateItemModule
 import br.com.mywishkart.di.SplashModule
 import br.com.mywishkart.di.appModule
 import org.koin.android.ext.koin.androidContext
@@ -18,7 +19,8 @@ class MyApplication : Application() {
     private fun startKoin() {
         val appModules =listOf(
             appModule,
-            SplashModule
+            SplashModule,
+            CreateItemModule
         )
         startKoin {
             androidLogger(Level.ERROR)
