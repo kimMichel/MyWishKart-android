@@ -1,65 +1,14 @@
 package br.com.mywishkart.ui.screen.home
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
+import androidx.lifecycle.ViewModel
 import br.com.mywishkart.models.CategoryItem
 import br.com.mywishkart.models.WishItem
-import br.com.mywishkart.navigation.Screen
-import br.com.mywishkart.ui.components.HomeItem
-import org.koin.androidx.compose.koinViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 
-@Composable
-fun HomeScreen(
-    navController: NavHostController,
-    viewModel: HomeViewModel = koinViewModel()
-) {
+class HomeViewModel() : ViewModel() {
 
-    val categoryList by viewModel.categoryList.collectAsState()
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        HomeContent(
-            categoryList = categoryList,
-            navController = navController
-        )
-    }
-}
-
-@Composable
-fun HomeContent(
-    categoryList: List<CategoryItem>,
-    navController: NavHostController
-) {
-    LazyColumn(
-        modifier = Modifier
-            .padding(top = 4.dp)
-    ) {
-        items(categoryList.size) { i ->
-            val category = categoryList[i]
-            HomeItem(category = category) {
-                navController.navigate("${Screen.Create.route}/${category.categoryTitle}")
-            }
-        }
-    }
-}
-
-@Preview
-@Composable
-fun HomeContentPreview() {
-    HomeContent(
-        categoryList = listOf(
+    val categoryList = MutableStateFlow(
+        listOf(
             CategoryItem(
                 categoryTitle = "Familia",
                 items = listOf(
@@ -92,8 +41,7 @@ fun HomeContentPreview() {
             ),
             CategoryItem(
                 categoryTitle = "Conta",
-                items = listOf(
-                )
+                items = listOf()
             ),
             CategoryItem(
                 categoryTitle = "Goals",
@@ -125,7 +73,6 @@ fun HomeContentPreview() {
                     ),
                 )
             )
-        ),
-        navController = rememberNavController()
+        )
     )
 }
